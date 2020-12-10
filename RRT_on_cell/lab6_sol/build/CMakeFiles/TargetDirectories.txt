@@ -1,0 +1,3 @@
+/home/student/Desktop/ROVI Project/Motion1/lab6_sol/build/CMakeFiles/rebuild_cache.dir
+/home/student/Desktop/ROVI Project/Motion1/lab6_sol/build/CMakeFiles/Pathplanning.dir
+/home/student/Desktop/ROVI Project/Motion1/lab6_sol/build/CMakeFiles/edit_cache.dir

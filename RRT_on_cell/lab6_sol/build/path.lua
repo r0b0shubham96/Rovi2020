@@ -1,0 +1,32 @@
+require("sdurw")
+require("sdurws")
+using("sdurw")
+using("sdurws")
+sdurws.setRobWorkStudio(sdurws.getRobWorkStudioFromQt())
+wc = sdurws.getRobWorkStudio():getWorkCell()
+state = wc:getDefaultState()
+device = wc:findDevice("UR-6-85-5-A")
+gripper = wc:findFrame("Tool")
+bottle = wc:findFrame("Bottle")
+table = wc:findFrame("Table")
+
+function setQ(q)
+qq = sdurw.Q(#q,q[1],q[2],q[3],q[4],q[5],q[6])
+device:setQ(qq,state)
+sdurws.getRobWorkStudio():setState(state)
+sdurw.sleep(0.1)
+end
+
+function attach(obj, tool)
+sdurw.gripFrame(obj, tool, state)
+sdurws.getRobWorkStudio():setState(state)
+sdurw.sleep(0.1)
+end
+
+setQ({1.875,-1.85,-2.6,1.325,1.433,0})
+attach(bottle, gripper)
+setQ({1.24387,-1.77477,-2.01481,0.976596,1.13743,0.0722559})
+setQ({1.06853,-1.77944,-1.97257,0.778296,1.16781,0.0430799})
+setQ({0.435355,-1.79629,-1.82005,0.0621974,1.27754,-0.0622801})
+setQ({-0.197823,-1.81315,-1.66752,-0.653901,1.38727,-0.16764})
+setQ({-0.831,-1.83,-1.515,-1.37,1.497,-0.273})
